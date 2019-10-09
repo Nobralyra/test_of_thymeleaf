@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Test of Thymeleaf to validation</title>
+</head>
+<body>
+<div class="portlet-body form">
+    <form role="form" th:object="${AR225}" th:action="@{/index}" th:method="post">
+
+        <div class="form-body">
+            <div class="form-group" >
+                <label>Year</label>
+                <div th:classappend="${#fields.hasErrors('Year')} ? 'input-icon right' : ''">
+                    <i th:if="${#fields.hasErrors('Year')}" class="fa fa-exclamation tooltips" data-original-title="please enter a valid year" data-container="body"></i>
+                    <input type="text" class="form-control" maxlength="32" th:field="*{Year}" placeholder="Should be 4 characters"/>
+                    <span th:if="${#fields.hasErrors('Year')}" class="help-block" th:errors="*{Year}"></span>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn blue">Submit</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
